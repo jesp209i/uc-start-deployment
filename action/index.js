@@ -2218,7 +2218,7 @@ async function startDeployment(callUrl, apiKey) {
     "Umbraco-Api-Key": apiKey
   };
   const client = new import_http_client.HttpClient();
-  var response = await client.getJson(callUrl, headers);
+  var response = await client.patchJson(callUrl, "", headers);
   if (response.statusCode === 202 && response.result !== null && response.result.deploymentState === "Queued") {
     return Promise.resolve(response.result);
   }

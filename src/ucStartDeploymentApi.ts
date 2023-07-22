@@ -12,7 +12,7 @@ export async function startDeployment(callUrl: string, apiKey: string): Promise<
     };
 
     const client = new HttpClient();
-    var response = await client.getJson<DeploymentResponse>(callUrl, headers);
+    var response = await client.patchJson<DeploymentResponse>(callUrl, "", headers);
 
     if (response.statusCode === 202 && response.result !== null && response.result.deploymentState === 'Queued')
     {
